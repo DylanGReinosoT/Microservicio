@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import users from "../database/users.js";
-import products from "../database/products.js";
 
 function App() {
-  const [user, setUsers] = useState(user);
-  const [product, setProducts] = useState(product);
+  const [users, setUsers] = useState([]); // Inicializa como array vacío
+  const [products, setProducts] = useState([]); // Inicializa como array vacío
 
   useEffect(() => {
+    // Petición para obtener usuarios
     axios
       .get("http://localhost:3004/users")
       .then((response) => {
@@ -18,6 +17,7 @@ function App() {
         console.error(error);
       });
 
+    // Petición para obtener productos
     axios
       .get("http://localhost:3006/products")
       .then((response) => {
